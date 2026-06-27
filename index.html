@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gloom Kids Cult — Whitelist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green: #8FD4B0;
+    --green2: #6BC49A;
+    --green3: #A8DFC2;
+    --black: #0d0d0d;
+    --offwhite: #f0faf5;
+    --dark: #1a1a1a;
+  }
+
+  body {
+    background: var(--green);
+    color: var(--black);
+    font-family: 'Nunito', Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Swirl background pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M100 100 C100 80 120 80 120 100 C120 128 92 128 92 100 C92 64 136 64 136 100 C136 144 80 144 80 100 C80 48 148 48 148 100'/%3E%3Cpath d='M30 160 C30 144 46 144 46 160 C46 180 22 180 22 160 C22 132 58 132 58 160'/%3E%3Cpath d='M168 38 C168 26 178 26 178 38 C178 52 162 52 162 38 C162 20 184 20 184 38'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    background: var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: var(--green);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fangs {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 14px;
+  }
+
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+
+  .nav-links a {
+    color: rgba(143,212,176,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--green); }
+
+  /* PAGES */
+  .page { display: none; min-height: 100vh; padding-top: 60px; position: relative; z-index: 1; }
+  .page.active { display: block; }
+
+  /* ===== HOME ===== */
+  .hero {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+    position: relative;
+  }
+
+  /* Floating doodle eyes/swirls */
+  .floaties { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .floaty {
+    position: absolute;
+    animation: bobble ease-in-out infinite alternate;
+  }
+  @keyframes bobble {
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-18px) rotate(5deg); }
+  }
+
+  .hero-eyeball {
+    display: inline-block;
+    background: var(--black);
+    border-radius: 50%;
+    position: relative;
+  }
+  .hero-eyeball::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .cult-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--black);
+    color: var(--green);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(4.5rem, 14vw, 10rem);
+    line-height: 0.9;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+    position: relative;
+    letter-spacing: 0.01em;
+  }
+
+  .hero h1 .outline {
+    -webkit-text-stroke: 3px var(--black);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(0,0,0,0.6);
+    margin-bottom: 2.5rem;
+    max-width: 380px;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    background: var(--black);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .stat {
+    padding: 1rem 2rem;
+    text-align: center;
+    border-right: 1px solid rgba(143,212,176,0.15);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(143,212,176,0.5);
+    margin-top: 3px;
+  }
+
+  .btn-black {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--black);
+    color: var(--green);
+    border: none;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .btn-black:hover { transform: scale(1.04) rotate(-1deg); background: #222; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--black);
+    border: 3px solid var(--black);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .btn-ghost:hover { transform: scale(1.04) rotate(1deg); background: rgba(0,0,0,0.08); }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+  /* TICKER */
+  .ticker {
+    background: var(--black);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid rgba(143,212,176,0.2);
+    border-bottom: 3px solid rgba(143,212,176,0.2);
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 18s linear infinite;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .ticker-inner span { margin: 0 2.5rem; }
+  .ticker-dot { color: var(--green2); opacity: 0.5; }
+
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ABOUT SECTION */
+  .about-section {
+    padding: 5rem 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-card {
+    background: var(--black);
+    border-radius: 20px;
+    padding: 2rem;
+    color: var(--green);
+  }
+
+  .about-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+
+  .about-card p {
+    font-size: 14px;
+    color: rgba(143,212,176,0.6);
+    line-height: 1.7;
+    font-weight: 700;
+  }
+
+  .about-card.big {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .big-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5rem;
+    color: var(--green);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* ===== ROADMAP ===== */
+  .roadmap-page {
+    background: var(--black);
+    min-height: calc(100vh - 60px);
+    color: var(--green);
+  }
+
+  .roadmap-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    border-bottom: 1px solid rgba(143,212,176,0.1);
+  }
+
+  .roadmap-header .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border: 2px solid rgba(143,212,176,0.2);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green2);
+    margin-bottom: 1rem;
+  }
+
+  .roadmap-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--green);
+    line-height: 1;
+  }
+
+  .phases {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .phase {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .phase-dot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+
+  .phase-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot.dim {
+    background: transparent;
+    border: 2px solid rgba(143,212,176,0.3);
+  }
+
+  .phase-connector {
+    width: 2px;
+    flex: 1;
+    background: rgba(143,212,176,0.12);
+    min-height: 40px;
+    margin: 4px 0;
+  }
+
+  .phase-content { padding-bottom: 2.5rem; flex: 1; }
+
+  .phase-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag-done { background: rgba(143,212,176,0.15); color: var(--green); }
+  .tag-live { background: var(--green); color: var(--black); }
+  .tag-soon { background: transparent; color: rgba(143,212,176,0.4); border: 1px solid rgba(143,212,176,0.15); }
+
+  .phase-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+
+  .phase-items { list-style: none; }
+
+  .phase-items li {
+    font-size: 14px;
+    color: rgba(143,212,176,0.5);
+    padding: 3px 0;
+    font-weight: 700;
+    display: flex;
+    gap: 8px;
+  }
+
+  .phase-items li::before { content: '›'; color: var(--green2); }
+
+  /* ===== APPLY WL ===== */
+  .apply-page {
+    min-height: calc(100vh - 60px);
+  }
+
+  .apply-header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+  }
+
+  .apply-header .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border: 2px solid rgba(0,0,0,0.15);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+  }
+
+  .apply-header h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .apply-header p {
+    font-size: 15px;
+    color: rgba(0,0,0,0.55);
+    font-weight: 700;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .wl-container {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 2rem 2rem 6rem;
+  }
+
+  .progress-wrap { margin-bottom: 2rem; }
+
+  .progress-track {
+    height: 6px;
+    background: rgba(0,0,0,0.12);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--black);
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    width: 0%;
+  }
+
+  .progress-text {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.45);
+  }
+
+  .task-card {
+    background: var(--black);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    transition: box-shadow 0.3s;
+    overflow: hidden;
+  }
+
+  .task-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: rgba(143,212,176,0.1);
+    transition: background 0.3s;
+  }
+
+  .task-card.done::before { background: var(--green); }
+
+  .task-card.done { box-shadow: 0 0 0 2px var(--green); }
+
+  .task-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .task-bubble {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(143,212,176,0.1);
+    border: 2px solid rgba(143,212,176,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px;
+    color: var(--green);
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .task-card.done .task-bubble {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--black);
+  }
+
+  .task-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: var(--green);
+    line-height: 1.2;
+  }
+
+  .task-check-icon {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 18px;
+    color: var(--green);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .task-card.done .task-check-icon { opacity: 1; }
+
+  .task-body { font-size: 13px; color: rgba(143,212,176,0.5); margin-bottom: 1rem; font-weight: 700; line-height: 1.5; }
+
+  .task-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 2px solid rgba(143,212,176,0.2);
+    border-radius: 100px;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 0.75rem;
+    display: inline-flex;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .task-link:hover {
+    border-color: var(--green);
+    background: rgba(143,212,176,0.08);
+  }
+
+  .task-field {
+    width: 100%;
+    background: rgba(143,212,176,0.06);
+    border: 2px solid rgba(143,212,176,0.15);
+    border-radius: 12px;
+    padding: 10px 14px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 0.75rem;
+  }
+
+  .task-field::placeholder { color: rgba(143,212,176,0.25); }
+  .task-field:focus { border-color: var(--green); }
+
+  .task-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--green);
+    color: var(--black);
+    border: none;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .task-btn:hover { background: var(--green3); transform: scale(1.01); }
+
+  .join-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--black);
+    color: var(--green);
+    border: none;
+    border-radius: 100px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: transform 0.15s, opacity 0.3s;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .join-btn.enabled { opacity: 1; pointer-events: all; }
+  .join-btn.enabled:hover { transform: scale(1.02) rotate(-0.5deg); }
+
+  /* MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(13,13,13,0.92);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .modal.show { display: flex; }
+
+  .modal-box {
+    background: var(--black);
+    border: 2px solid var(--green);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    max-width: 440px;
+    width: 100%;
+  }
+
+  .modal-face {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: block;
+    line-height: 1;
+  }
+
+  .modal-box h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+
+  .modal-box p {
+    font-size: 14px;
+    color: rgba(143,212,176,0.5);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .modal-wallet {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--green);
+    background: rgba(143,212,176,0.06);
+    border: 1px solid rgba(143,212,176,0.2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    word-break: break-all;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+  .modal-btn-share {
+    padding: 12px 24px;
+    background: var(--green);
+    color: var(--black);
+    border: none;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .modal-btn-share:hover { background: var(--green3); }
+
+  .modal-btn-close {
+    padding: 12px 24px;
+    background: transparent;
+    color: rgba(143,212,176,0.5);
+    border: 2px solid rgba(143,212,176,0.2);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .modal-btn-close:hover { border-color: var(--green); color: var(--green); }
+
+  @media (max-width: 600px) {
+    .nav-links { gap: 0.8rem; }
+    .nav-links a { font-size: 11px; }
+    .about-card.big { grid-column: span 1; }
+    .about-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 0; border-radius: 16px; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(143,212,176,0.1); }
+    .stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">
+    <span class="fangs">ʕ•ᴥ•ʔ</span> Gloom Kids
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a onclick="showPage('roadmap')" id="nav-roadmap">Roadmap</a></li>
+    <li><a onclick="showPage('apply')" id="nav-apply">Apply WL</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HOME ===== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="floaties" id="floaties"></div>
+
+    <div class="cult-badge">🩶 Zero Sunshine · All Gloom</div>
+
+    <h1>
+      GLOOM<br>
+      <span class="outline">KIDS</span>
+    </h1>
+
+    <p class="hero-sub">A cult of misfits who thrive in the dark. 1,101 hand-crafted kids — on-chain forever.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1,101</div>
+        <div class="stat-label">Kids</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Gloom</div>
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <button class="btn-black" onclick="showPage('apply')">Join the Cult 🩶</button>
+      <button class="btn-ghost" onclick="showPage('roadmap')">View Roadmap</button>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>GLOOM KIDS CULT</span><span class="ticker-dot">✦</span>
+      <span>ZERO SUNSHINE</span><span class="ticker-dot">✦</span>
+      <span>ALL GLOOM</span><span class="ticker-dot">✦</span>
+      <span>@GloomKidsCult</span><span class="ticker-dot">✦</span>
+      <span>WL NOW OPEN</span><span class="ticker-dot">✦</span>
+      <span>1,101 KIDS</span><span class="ticker-dot">✦</span>
+      <span>GLOOM KIDS CULT</span><span class="ticker-dot">✦</span>
+      <span>ZERO SUNSHINE</span><span class="ticker-dot">✦</span>
+      <span>ALL GLOOM</span><span class="ticker-dot">✦</span>
+      <span>@GloomKidsCult</span><span class="ticker-dot">✦</span>
+      <span>WL NOW OPEN</span><span class="ticker-dot">✦</span>
+      <span>1,101 KIDS</span><span class="ticker-dot">✦</span>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <div class="about-grid">
+      <div class="about-card big">
+        <div>
+          <h3>Who are the Gloom Kids?</h3>
+          <p>A collection of 1,101 unique misfits who never quite fit in. They don't chase sunshine — they are the gloom. Each one hand-crafted, each one cursed, each one yours forever on-chain.</p>
+        </div>
+        <div class="big-num">1,101</div>
+      </div>
+      <div class="about-card">
+        <h3>🩶 The Cult</h3>
+        <p>Holders get exclusive access to the Gloom Kids inner circle. No sunshine allowed.</p>
+      </div>
+      <div class="about-card">
+        <h3>🌑 All Gloom</h3>
+        <p>Whitelist spots are limited. Complete the tasks and secure your place in the cult early.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ROADMAP ===== -->
+<div class="page" id="page-roadmap">
+  <div class="roadmap-page">
+    <div class="roadmap-header">
+      <div class="tag">The Plan</div>
+      <h2>Roadmap</h2>
+    </div>
+
+    <div class="phases">
+
+      <div class="phase">
+        <div class="phase-dot-col">
+          <div class="phase-dot"></div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-tag tag-done">Complete</div>
+          <div class="phase-title">The Gloom Begins</div>
+          <ul class="phase-items">
+            <li>Project concept &amp; artwork creation</li>
+            <li>X account launch — @GloomKidsCult</li>
+            <li>Community building begins</li>
+            <li>Reached 1,000+ followers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot-col">
+          <div class="phase-dot"></div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-tag tag-live">Live Now</div>
+          <div class="phase-title">Whitelist Campaign</div>
+          <ul class="phase-items">
+            <li>WL application site launches</li>
+            <li>Follow, RT &amp; engage tasks to earn WL spot</li>
+            <li>Community giveaways &amp; events</li>
+            <li>Sneak peek reveals begin</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot-col">
+          <div class="phase-dot dim"></div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-tag tag-soon">Coming Soon</div>
+          <div class="phase-title">The Mint</div>
+          <ul class="phase-items">
+            <li>WL mint opens first</li>
+            <li>Public mint opens</li>
+            <li>1,101 Kids find their owners</li>
+            <li>Full reveal event</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot-col">
+          <div class="phase-dot dim"></div>
+          <div class="phase-connector"></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-tag tag-soon">Coming Soon</div>
+          <div class="phase-title">The Cult Grows</div>
+          <ul class="phase-items">
+            <li>Holder-exclusive Discord</li>
+            <li>Royalty benefits for holders</li>
+            <li>Collaborations &amp; partnerships</li>
+            <li>Merchandise for holders</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-dot-col">
+          <div class="phase-dot dim"></div>
+        </div>
+        <div class="phase-content">
+          <div class="phase-tag tag-soon">TBA</div>
+          <div class="phase-title">Beyond The Gloom</div>
+          <ul class="phase-items">
+            <li>Community-voted future drops</li>
+            <li>Lore &amp; storytelling expansion</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== APPLY WL ===== -->
+<div class="page" id="page-apply">
+  <div class="apply-page">
+    <div class="apply-header">
+      <div class="tag">Whitelist</div>
+      <h2>Join the Cult</h2>
+      <p>Complete all 4 tasks to secure your whitelist spot.</p>
+    </div>
+
+    <div class="wl-container">
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <div class="progress-text"><span id="progressCount">0</span> / 4 tasks done</div>
+      </div>
+
+      <!-- TASK 1 -->
+      <div class="task-card" id="task1">
+        <div class="task-check-icon">✓</div>
+        <div class="task-top">
+          <div class="task-bubble">1</div>
+          <div class="task-name">Follow @GloomKidsCult on X</div>
+        </div>
+        <p class="task-body">Follow our official X account to stay updated on all announcements and the mint date.</p>
+        <a href="https://x.com/GloomKidsCult" target="_blank" class="task-link">→ Open @GloomKidsCult on X</a>
+        <input type="text" class="task-field" id="input-twitter" placeholder="Your X username (e.g. @YourName)" />
+        <button class="task-btn" onclick="verifyTask(1)">Done</button>
+      </div>
+
+      <!-- TASK 2 -->
+      <div class="task-card" id="task2">
+        <div class="task-check-icon">✓</div>
+        <div class="task-top">
+          <div class="task-bubble">2</div>
+          <div class="task-name">Like &amp; Retweet the pinned post</div>
+        </div>
+        <p class="task-body">Like and retweet our pinned post to spread the gloom to your followers.</p>
+        <a href="https://x.com/GloomKidsCult/status/2070617874146721887" target="_blank" class="task-link">→ Open pinned post on X</a>
+        <button class="task-btn" onclick="verifyTask(2)">Done</button>
+      </div>
+
+      <!-- TASK 3 -->
+      <div class="task-card" id="task3">
+        <div class="task-check-icon">✓</div>
+        <div class="task-top">
+          <div class="task-bubble">3</div>
+          <div class="task-name">Comment on the pinned post</div>
+        </div>
+        <p class="task-body">Drop a comment on the pinned post and paste your X profile link below so we can verify.</p>
+        <a href="https://x.com/GloomKidsCult/status/2070617874146721887" target="_blank" class="task-link">→ Comment on pinned post</a>
+        <input type="text" class="task-field" id="input-comment" placeholder="Your X profile link (x.com/YourName)" />
+        <button class="task-btn" onclick="verifyTask(3)">Done</button>
+      </div>
+
+      <!-- TASK 4 -->
+      <div class="task-card" id="task4">
+        <div class="task-check-icon">✓</div>
+        <div class="task-top">
+          <div class="task-bubble">4</div>
+          <div class="task-name">Submit your wallet address</div>
+        </div>
+        <p class="task-body">Paste your wallet address below. This is where your WL spot will be registered.</p>
+        <input type="text" class="task-field" id="input-wallet" placeholder="0x... or your wallet address" />
+        <button class="task-btn" onclick="verifyTask(4)">Done</button>
+      </div>
+
+      <button class="join-btn" id="submitBtn" onclick="submitWL()">Join the Cult 🩶</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="successModal">
+  <div class="modal-box">
+    <span class="modal-face">🩶</span>
+    <h2>Welcome to the Cult</h2>
+    <p>Your whitelist application has been received. You're officially a Gloom Kid.</p>
+    <div class="modal-wallet" id="walletDisplay"></div>
+    <div class="modal-btns">
+      <a id="shareXBtn" href="#" target="_blank" class="modal-btn-share">Share on X →</a>
+      <button class="modal-btn-close" onclick="document.getElementById('successModal').classList.remove('show')">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const taskData = { 1: false, 2: false, 3: false, 4: false };
+  const inputs = { 1: 'input-twitter', 2: null, 3: 'input-comment', 4: 'input-wallet' };
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function verifyTask(num) {
+    if (num > 1 && !taskData[num - 1]) {
+      const prev = document.getElementById('task' + (num - 1));
+      prev.style.outline = '2px solid rgba(143,212,176,0.4)';
+      setTimeout(() => prev.style.outline = '', 900);
+      return;
+    }
+    if (taskData[num]) return;
+    const inputId = inputs[num];
+    const inputEl = inputId ? document.getElementById(inputId) : null;
+    const val = inputEl ? inputEl.value.trim() : 'done';
+    if (inputEl && !val) {
+      inputEl.style.borderColor = 'rgba(255,80,80,0.6)';
+      setTimeout(() => inputEl.style.borderColor = '', 800);
+      return;
+    }
+    taskData[num] = val || 'done';
+    document.getElementById('task' + num).classList.add('done');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const done = Object.values(taskData).filter(Boolean).length;
+    document.getElementById('progressBar').style.width = (done / 4 * 100) + '%';
+    document.getElementById('progressCount').textContent = done;
+    const btn = document.getElementById('submitBtn');
+    done === 4 ? btn.classList.add('enabled') : btn.classList.remove('enabled');
+  }
+
+  function submitWL() {
+    const wallet = taskData[4] || '';
+    const twitter = taskData[1] || '';
+    const profileLink = taskData[3] || '';
+    document.getElementById('walletDisplay').textContent = wallet;
+    const tweet = encodeURIComponent('I just joined the @GloomKidsCult whitelist 🩶\nZero sunshine. All gloom.\n\nApply here: ');
+    document.getElementById('shareXBtn').href = 'https://x.com/intent/tweet?text=' + tweet;
+    document.getElementById('successModal').classList.add('show');
+
+    fetch('https://script.google.com/macros/s/AKfycbxYQ3hZdgbMtHrMMLIKNm4hEWetwx8QS2sjYgy5uZmLxmU4CVe96FD12VcbIIIEOWg4/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ twitter, profileLink, wallet }),
+    }).catch(() => {});
+  }
+
+  // Floating doodles
+  const floaties = document.getElementById('floaties');
+  const shapes = ['○', '◎', '⊙', '◉', '○', '●'];
+  for (let i = 0; i < 10; i++) {
+    const el = document.createElement('div');
+    el.className = 'floaty';
+    const size = 16 + Math.random() * 28;
+    el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+    el.style.cssText = `left:${Math.random()*95}%;top:${10+Math.random()*80}%;font-size:${size}px;color:rgba(0,0,0,0.08);animation-delay:${Math.random()*4}s;animation-duration:${3+Math.random()*4}s;`;
+    floaties.appendChild(el);
+  }
+</script>
+</body>
+</html>
